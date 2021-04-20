@@ -32,7 +32,7 @@ function Header() {
           }}
         />
 
-        <ul className={`burger-menu__list list ${open ? `open` : `close`}`}>
+        <ul className={`burger-menu__list list ${open ? 'open' : 'close'}`}>
           <h2 className="list__title">Beer catalog</h2>
           <li id="list" className="list__item list__item-home">
             Home
