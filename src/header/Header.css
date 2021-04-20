@@ -1,0 +1,44 @@
+.header {
+  background-color: rgb(65, 65, 124);
+  color: antiquewhite;
+  height: 100px;
+  width: 100%;
+  display: flex;
+  z-index: 1;
+}
+.header__title {
+  margin-top: 0;
+  padding-top: 25px;
+  z-index: 2;
+}
+.burger-menu__icon {
+  width: 100px;
+  height: 100px;
+}
+.burger-menu__list {
+  z-index: 3;
+  background-color: white;
+  color: black;
+  height: 100%;
+  position: fixed;
+  width: 300px;
+  margin-top: -110px;
+  padding: 0;
+  text-align: center;
+}
+.list__title {
+  color: white;
+  height: 100px;
+  background-color: rgb(65, 65, 124);
+  padding-top: 50px;
+  margin: 0;
+}
+.list__item {
+  margin-top: 10px;
+}
+.close {
+  left: -100%;
+}
+.open {
+  left: 0;
+}

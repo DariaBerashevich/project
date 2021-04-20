@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import SearchForm from "./SearchForm";
+import "./Catalog.css";
 
 const beersUrl = `https://api.punkapi.com/v2/beers`;
 
@@ -26,8 +27,8 @@ function Catalog() {
         dataLength={beerList.length}
         next={setTimeout(() => setBeerNumber(beerNumber + 9), 2500)}
         hasMore={true || false}
-        loader={<br />}
-        className="catalog"
+        loader={<p>Loading...</p>}
+        className="catalog-page__catalog catalog"
       >
         {beerList.map(({ id, image_url, tagline, name }) => {
           return (

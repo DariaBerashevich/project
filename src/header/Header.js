@@ -1,29 +1,24 @@
 import React from "react";
+import { useState } from "react/cjs/react.development";
 import menu from "../../src/assets/menu.png";
+import "./Header.css";
+
+document.onclick = function (e) {
+  let burgerMenu = document.getElementsByClassName("list")[0];
+  if (
+    e.target.className !== "burger-menu__icon" &&
+    e.target.classList.contains("burger-menu__list") === false &&
+    e.target.classList.contains("list__title") === false
+  ) {
+    if (burgerMenu.classList.contains("open")) {
+      burgerMenu.classList.remove("open");
+      burgerMenu.classList.add("close");
+    }
+  }
+};
 
 function Header() {
-  let menuHandler = () => {
-    let burgerMenu = document.getElementsByClassName("list")[0];
-    if (burgerMenu.classList.contains("hide")) {
-      burgerMenu.classList.remove("hide");
-      burgerMenu.classList.add("show");
-    }
-  };
-
-  document.onclick = function (e) {
-    let burgerMenu = document.getElementsByClassName("list")[0];
-    if (
-      e.target.className !== "burger-menu__icon" &&
-      e.target.classList.contains("burger-menu__list") === false &&
-      e.target.classList.contains("list__title") === false
-    ) {
-      console.log(e.target.className);
-      if (burgerMenu.classList.contains("show")) {
-        burgerMenu.classList.remove("show");
-        burgerMenu.classList.add("hide");
-      }
-    }
-  };
+  const [open, setOpen] = useState(false);
 
   return (
     <header className="header">
@@ -32,10 +27,12 @@ function Header() {
           className="burger-menu__icon"
           src={menu}
           alt="Burger menu icon"
-          onClick={menuHandler}
+          onClick={() => {
+            setOpen(!open);
+          }}
         />
 
-        <ul className="burger-menu__list list hide">
+        <ul className={`burger-menu__list list ${open ? `open` : `close`}`}>
           <h2 className="list__title">Beer catalog</h2>
           <li id="list" className="list__item list__item-home">
             Home
