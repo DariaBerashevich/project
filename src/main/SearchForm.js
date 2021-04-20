@@ -1,18 +1,15 @@
-import React from "react";
-import { useState } from "react/cjs/react.development";
+import React, { useState } from "react";
 import "./SearchForm.css";
-
-const beersUrl = `https://api.punkapi.com/v2/beers`;
+import beersUrl from "../constants";
 
 function SearchForm(props) {
   const [inputText, setInputText] = useState("");
-  const [show, setShow] = useState(false);
+  const [showFilters, setShowFilters] = useState(false);
   const [alcoholVol, setAlcoholVol] = useState(2);
   const [bitterness, setBitterness] = useState(0);
   const [colorEBC, setColorEBC] = useState(4);
   const searchUrl = `${beersUrl}?beer_name=${inputText}`;
-  let searchList;
-  let setBeerList = props.setBeerList;
+  const { setBeerList } = props;
   let xhttp = new XMLHttpRequest();
 
   let searchHandler = () => {
@@ -46,7 +43,7 @@ function SearchForm(props) {
         onSubmit={(e) => {
           e.preventDefault();
           searchHandler();
-          inputText === "" ? setShow(false) : setShow(true);
+          inputText === "" ? setShowFilters(false) : setShowFilters(true);
         }}
       >
         <div className="searchInput">
@@ -63,7 +60,7 @@ function SearchForm(props) {
             Search
           </button>
         </div>
-        <div className={`form__filter filter ${show ? "show" : "hide"}`}>
+        <div className={`form__filter filter ${showFilters ? "show" : "hide"}`}>
           <label className="filter__item filter__item-alcohol">
             <span className="filter__value"> {alcoholVol} </span>
             Alcohol by volume
