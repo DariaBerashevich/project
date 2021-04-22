@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import SearchForm from "./SearchForm";
 import "./Catalog.css";
-
-const beersUrl = `https://api.punkapi.com/v2/beers`;
+import beersUrl from "../constants";
 
 function Catalog() {
   const [beerList, setBeerList] = useState([]);
@@ -22,11 +21,12 @@ function Catalog() {
 
   return (
     <div className="catalog-page">
-      <SearchForm />
+      <SearchForm setBeerList={setBeerList} />
       <InfiniteScroll
+        style={{ overflow: "hidden" }}
         dataLength={beerList.length}
-        next={setTimeout(() => setBeerNumber(beerNumber + 9), 2500)}
-        hasMore={true || false}
+        next={() => setBeerNumber(beerNumber + 9)}
+        hasMore={true}
         loader={<p>Loading...</p>}
         className="catalog-page__catalog catalog"
       >
