@@ -24,7 +24,8 @@ function Catalog(props) {
       }`
     )
       .then((response) => response.json())
-      .then((products) => setBeerList(products));
+      .then((products) => setBeerList(products))
+      .catch((err) => alert("Ошибка " + err));
   }, [beerAmount, searchText, alcoholVol, bitterness, colorEBC]);
 
   return (

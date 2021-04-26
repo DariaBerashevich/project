@@ -41,7 +41,7 @@ function SearchForm(props) {
         </div>
         <div className={`form__filter filter ${showFilters ? "show" : "hide"}`}>
           <label className="filter__item filter__item-alcohol">
-            <span className="filter__value"> {props.alcoholVol} </span>
+            <span className="filter__value"> {alcoholVol} </span>
             Alcohol by volume
             <input
               type="range"
