@@ -1,40 +1,18 @@
 import React, { useState } from "react";
 import "./SearchForm.css";
-import beersUrl from "../constants";
+import { connect } from "react-redux";
+import { setFilters, setSearch } from "../redux/actions.js";
 
 function SearchForm(props) {
+  const {
+    onSetSearchResult,
+    onSetFilterResult,
+    alcoholVol,
+    bitterness,
+    colorEBC,
+  } = props;
   const [inputText, setInputText] = useState("");
   const [showFilters, setShowFilters] = useState(false);
-  const [alcoholVol, setAlcoholVol] = useState(2);
-  const [bitterness, setBitterness] = useState(0);
-  const [colorEBC, setColorEBC] = useState(4);
-  const searchUrl = `${beersUrl}?beer_name=${inputText}`;
-  const { setBeerList } = props;
-  let xhttp = new XMLHttpRequest();
-
-  let searchHandler = () => {
-    xhttp.onload = function () {
-      if (this.readyState === 4 && this.status === 200) {
-        setBeerList(JSON.parse(xhttp.responseText));
-      }
-    };
-    xhttp.open("GET", searchUrl, true);
-    xhttp.send(null);
-  };
-
-  let filterHandler = () => {
-    xhttp.onload = function () {
-      if (this.readyState === 4 && this.status === 200) {
-        setBeerList(JSON.parse(xhttp.responseText));
-      }
-    };
-    xhttp.open(
-      "GET",
-      `${searchUrl}&abv_gt=${alcoholVol}&ibu_gt=${bitterness}&ebc_gt=${colorEBC}`,
-      true
-    );
-    xhttp.send(null);
-  };
 
   return (
     <div>
@@ -42,7 +20,7 @@ function SearchForm(props) {
         className="catalog-page__form form"
         onSubmit={(e) => {
           e.preventDefault();
-          searchHandler();
+          onSetSearchResult(inputText);
           inputText === "" ? setShowFilters(false) : setShowFilters(true);
         }}
       >
@@ -56,6 +34,7 @@ function SearchForm(props) {
               setInputText(e.target.value);
             }}
           />
+
           <button type="submit" className="form__submit-btn">
             Search
           </button>
@@ -72,9 +51,8 @@ function SearchForm(props) {
               value={alcoholVol}
               step="0.1"
               onChange={(e) => {
-                setAlcoholVol(e.target.value);
+                onSetFilterResult("alcoholVol", e.target.value);
               }}
-              onMouseUp={filterHandler}
             />
           </label>
           <label className="filter__item filter__item-bitterness">
@@ -87,9 +65,8 @@ function SearchForm(props) {
               name="bitterness"
               value={bitterness}
               step="1"
-              onMouseUp={filterHandler}
               onChange={(e) => {
-                setBitterness(e.target.value);
+                onSetFilterResult("bitterness", e.target.value);
               }}
             />
           </label>
@@ -103,9 +80,8 @@ function SearchForm(props) {
               name="color"
               value={colorEBC}
               step="1"
-              onMouseUp={filterHandler}
               onChange={(e) => {
-                setColorEBC(e.target.value);
+                onSetFilterResult("colorEBC", e.target.value);
               }}
             />
           </label>
@@ -115,4 +91,14 @@ function SearchForm(props) {
   );
 }
 
-export default SearchForm;
+export default connect(
+  (state) => state,
+  (dispatch) => ({
+    onSetFilterResult: (filterName, filterValue) => {
+      dispatch(setFilters(filterName, filterValue));
+    },
+    onSetSearchResult: (inputText) => {
+      dispatch(setSearch(inputText));
+    },
+  })
+)(SearchForm);
