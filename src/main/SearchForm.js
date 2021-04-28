@@ -36,7 +36,7 @@ function SearchForm(props) {
           />
 
           <button type="submit" className="form__submit-btn">
-            Search
+            &#128269;
           </button>
         </div>
         <div className={`form__filter filter ${showFilters ? "show" : "hide"}`}>

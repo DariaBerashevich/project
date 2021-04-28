@@ -1,0 +1,38 @@
+.card {
+  color: white;
+}
+.card {
+  display: block;
+  text-align: center;
+}
+.card__description {
+  background-color: grey;
+  height: 160px;
+  text-align: left;
+  padding-left: 20px;
+  padding-bottom: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card__image {
+  width: 200px;
+  height: 400px;
+}
+.card__beer-description {
+  margin-top: 0;
+}
+.card__buttons {
+  margin-top: -10px;
+}
+.button {
+  background-color: gray;
+  border: none;
+  color: white;
+  font-size: medium;
+}
+.button:hover {
+  box-shadow: 0px 1px 3px black;
+}

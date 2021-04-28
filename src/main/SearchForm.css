@@ -19,3 +19,15 @@
   margin-top: 25px;
   height: 20px;
 }
+.form__submit-btn {
+  background-color: transparent;
+  border: none;
+}
+.form__submit-btn:hover {
+  background-color: lightgray;
+}
+.form__input {
+  border: none;
+  border-bottom: 2px solid black;
+  width: 300px;
+}

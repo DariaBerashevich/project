@@ -36,10 +36,10 @@ function Header() {
         <ul className={`burger-menu__list list ${open ? "open" : "close"}`}>
           <h2 className="list__title">Beer catalog</h2>
           <li id="list" className="list__item list__item-home">
-            <NavLink to="/catalog">Home</NavLink>
+            <NavLink to="/catalog">&#9750; Home</NavLink>
           </li>
           <li className="list__item list__item-favorites">
-            <NavLink to="/favorites">Favorites</NavLink>
+            <NavLink to="/favorites">&#9733; Favorites</NavLink>
           </li>
         </ul>
       </div>

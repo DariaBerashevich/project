@@ -1,4 +1,5 @@
 import React from "react";
+import "./BeerCard.css";
 
 function BeerCard(props) {
   const { beer, onDeleteFavorite, onSetFavorite, favoriteList } = props;
@@ -10,9 +11,10 @@ function BeerCard(props) {
       <div className="card__description">
         <h2 className="card__beer-name">{name}</h2>
         <h4 className="card__beer-description">{tagline}</h4>
-        <div>
-          <button>Open</button>
+        <div className="card__buttons">
+          <button className="button">Open</button>
           <button
+            className="button"
             onClick={() => {
               isFav ? onDeleteFavorite(id) : onSetFavorite(beer);
             }}
