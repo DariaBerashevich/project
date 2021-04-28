@@ -4,10 +4,12 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import SearchForm from "./SearchForm";
 import "./Catalog.css";
 import beersUrl from "../constants";
-import { setLoad } from "../redux/actions.js";
+import { setLoad, setFavorite, deleteFavorite } from "../redux/actions.js";
+import BeerCard from "./BeerCard";
 
 function Catalog(props) {
   const [beerList, setBeerList] = useState([]);
+
   const {
     searchText,
     alcoholVol,
@@ -15,6 +17,9 @@ function Catalog(props) {
     colorEBC,
     beerAmount,
     onSetLoadResult,
+    onSetFavorite,
+    onDeleteFavorite,
+    favoriteList,
   } = props;
 
   useEffect(() => {
@@ -40,19 +45,15 @@ function Catalog(props) {
         endMessage={<p>That's all</p>}
         className="catalog-page__catalog catalog"
       >
-        {beerList.map(({ id, image_url, tagline, name }) => {
+        {beerList.map((beer) => {
           return (
-            <div className="catalog__card card" key={id}>
-              <img className="card__image" src={image_url} alt="Beer logo" />
-              <div className="card__description">
-                <h2 className="card__beer-name">{name}</h2>
-                <h4 className="card__beer-description">{tagline}</h4>
-                <div>
-                  <button>Open</button>
-                  <button>Favorite</button>
-                </div>
-              </div>
-            </div>
+            <BeerCard
+              key={beer.id}
+              beer={beer}
+              onSetFavorite={onSetFavorite}
+              onDeleteFavorite={onDeleteFavorite}
+              favoriteList={favoriteList}
+            />
           );
         })}
       </InfiniteScroll>
@@ -64,6 +65,12 @@ export default connect(
   (dispatch) => ({
     onSetLoadResult: () => {
       dispatch(setLoad());
+    },
+    onSetFavorite: (beer) => {
+      dispatch(setFavorite(beer));
+    },
+    onDeleteFavorite: (id) => {
+      dispatch(deleteFavorite(id));
     },
   })
 )(Catalog);

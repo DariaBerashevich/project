@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { useState } from "react/cjs/react.development";
 import menu from "../../src/assets/menu.png";
 import "./Header.css";
@@ -32,12 +33,14 @@ function Header() {
           }}
         />
 
-        <ul className={`burger-menu__list list ${open ? 'open' : 'close'}`}>
+        <ul className={`burger-menu__list list ${open ? "open" : "close"}`}>
           <h2 className="list__title">Beer catalog</h2>
           <li id="list" className="list__item list__item-home">
-            Home
+            <NavLink to="/catalog">Home</NavLink>
           </li>
-          <li className="list__item list__item-favorites">Favorites</li>
+          <li className="list__item list__item-favorites">
+            <NavLink to="/favorites">Favorites</NavLink>
+          </li>
         </ul>
       </div>
       <h1 className="header__title">Beer catalog</h1>
