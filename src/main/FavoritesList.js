@@ -21,7 +21,6 @@ function FavoritesList(props) {
   );
 }
 
-export default connect(
-  (state) => state,
-  (dispatch) => ({})
-)(FavoritesList);
+export default connect((state) => ({
+  favoriteList: state.favoriteList,
+}))(FavoritesList);

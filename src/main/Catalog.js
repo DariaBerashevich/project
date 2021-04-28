@@ -66,11 +66,11 @@ export default connect(
     onSetLoadResult: () => {
       dispatch(setLoad());
     },
-    onSetFavorite: (id, beerList) => {
-      dispatch(setFavorite(id, beerList));
+    onSetFavorite: (beer) => {
+      dispatch(setFavorite(beer));
     },
-    onDeleteFavorite: (id, beerList) => {
-      dispatch(deleteFavorite(id, beerList));
+    onDeleteFavorite: (id) => {
+      dispatch(deleteFavorite(id));
     },
   })
 )(Catalog);

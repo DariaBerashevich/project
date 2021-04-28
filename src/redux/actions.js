@@ -28,12 +28,11 @@ export const setFavorite = (beer) => (dispatch) => {
   dispatch({
     type: actions.ADD_TO_FAVORITES,
     payload: beer,
-    id: beer.id,
   });
 };
 export const deleteFavorite = (id) => (dispatch) => {
   dispatch({
     type: actions.DELETE_FROM_FAVORITES,
-    id: id,
+    id,
   });
 };

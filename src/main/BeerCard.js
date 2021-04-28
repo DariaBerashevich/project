@@ -3,12 +3,7 @@ import React from "react";
 function BeerCard(props) {
   const { beer, onDeleteFavorite, onSetFavorite, favoriteList } = props;
   const { id, name, image_url, tagline } = beer;
-  let checkFavorites = () => {
-    return favoriteList.find((item) => {
-      return item.id === id;
-    });
-  };
-  let isFav = checkFavorites(id);
+  const isFav = favoriteList.find((item) => item.id === id);
   return (
     <div className="catalog__card card" key={id}>
       <img className="card__image" src={image_url} alt="Beer logo" />
@@ -17,23 +12,13 @@ function BeerCard(props) {
         <h4 className="card__beer-description">{tagline}</h4>
         <div>
           <button>Open</button>
-          {isFav ? (
-            <button
-              onClick={() => {
-                onDeleteFavorite(id);
-              }}
-            >
-              Delete
-            </button>
-          ) : (
-            <button
-              onClick={() => {
-                onSetFavorite(beer);
-              }}
-            >
-              Add to favorites
-            </button>
-          )}
+          <button
+            onClick={() => {
+              isFav ? onDeleteFavorite(id) : onSetFavorite(beer);
+            }}
+          >
+            {isFav ? "Delete" : "Add to favorites"}
+          </button>
         </div>
       </div>
     </div>

@@ -12,10 +12,7 @@ const initialState = {
   favoriteList: [],
 };
 
-let reducer = (state = initialState, action) => {
-  let deleteItem;
-  let newFavList = [];
-  let newDeleteList = [];
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actions.FILTER_ITEMS:
       return { ...state, ...action.payload };
@@ -24,16 +21,14 @@ let reducer = (state = initialState, action) => {
     case actions.LOAD_ITEMS:
       return { ...state, beerAmount: state.beerAmount + 9 };
     case actions.ADD_TO_FAVORITES:
+      let newFavList = [];
       newFavList.push(action.payload);
       return { ...state, favoriteList: state.favoriteList.concat(newFavList) };
     case actions.DELETE_FROM_FAVORITES:
-      deleteItem = state.favoriteList.find((beer) => {
-        return beer.id === action.id;
-      });
+      let newDeleteList = [];
       newDeleteList = state.favoriteList.filter(
-        (elem) => elem.id !== deleteItem.id
+        (elem) => elem.id !== action.id
       );
-      console.log(state.favoriteList);
       return { ...state, favoriteList: newDeleteList };
     default:
       return state;
