@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./BeerCard.css";
 
 function BeerCard(props) {
@@ -12,7 +13,9 @@ function BeerCard(props) {
         <h2 className="card__beer-name">{name}</h2>
         <h4 className="card__beer-description">{tagline}</h4>
         <div className="card__buttons">
-          <button className="button">Open</button>
+          <NavLink className="button" to={`/${id}`}>
+            Open
+          </NavLink>
           <button
             className="button"
             onClick={() => {
