@@ -1,4 +1,6 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import "./BeerCard.css";
 
 function BeerCard(props) {
   const { beer, onDeleteFavorite, onSetFavorite, favoriteList } = props;
@@ -10,14 +12,17 @@ function BeerCard(props) {
       <div className="card__description">
         <h2 className="card__beer-name">{name}</h2>
         <h4 className="card__beer-description">{tagline}</h4>
-        <div>
-          <button>Open</button>
+        <div className="card__buttons">
+          <NavLink className="button" to={`/beer/${id}`}>
+            Open
+          </NavLink>
           <button
+            className="button"
             onClick={() => {
               isFav ? onDeleteFavorite(id) : onSetFavorite(beer);
             }}
           >
-            {isFav ? "Delete" : "Add to favorites"}
+            {isFav ? "Remove favorite" : "Favorite"}
           </button>
         </div>
       </div>

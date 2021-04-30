@@ -4,23 +4,22 @@ import { useState } from "react/cjs/react.development";
 import menu from "../../src/assets/menu.png";
 import "./Header.css";
 
-document.onclick = function (e) {
-  let burgerMenu = document.getElementsByClassName("list")[0];
-  if (
-    e.target.className !== "burger-menu__icon" &&
-    e.target.classList.contains("burger-menu__list") === false &&
-    e.target.classList.contains("list__title") === false
-  ) {
-    if (burgerMenu.classList.contains("open")) {
-      burgerMenu.classList.remove("open");
-      burgerMenu.classList.add("close");
-    }
-  }
-};
-
 function Header() {
   const [open, setOpen] = useState(false);
-
+  document.onclick = function (e) {
+    let burgerMenu = document.getElementsByClassName("list")[0];
+    if (
+      e.target.className !== "burger-menu__icon" &&
+      e.target.classList.contains("burger-menu__list") === false &&
+      e.target.classList.contains("list__title") === false
+    ) {
+      if (burgerMenu.classList.contains("open")) {
+        burgerMenu.classList.remove("open");
+        burgerMenu.classList.add("close");
+        setOpen(!open);
+      }
+    }
+  };
   return (
     <header className="header">
       <div className="header__burger-menu burger-menu">
@@ -36,10 +35,10 @@ function Header() {
         <ul className={`burger-menu__list list ${open ? "open" : "close"}`}>
           <h2 className="list__title">Beer catalog</h2>
           <li id="list" className="list__item list__item-home">
-            <NavLink to="/catalog">Home</NavLink>
+            <NavLink to="/catalog">&#9750; Home</NavLink>
           </li>
           <li className="list__item list__item-favorites">
-            <NavLink to="/favorites">Favorites</NavLink>
+            <NavLink to="/favorites">&#9733; Favorites</NavLink>
           </li>
         </ul>
       </div>

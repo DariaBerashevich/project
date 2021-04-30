@@ -1,0 +1,148 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.beer-page {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.basic-info__container {
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+}
+.basic-info {
+  display: flex;
+  min-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.beer-page__image {
+  width: 200px;
+  height: 400px;
+}
+.beer-page__btn {
+  width: 200px;
+  height: 30px;
+  background-color: rgb(59, 179, 184);
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  color: white;
+  font-size: medium;
+  font-weight: 600;
+  text-shadow: 1px 2px 3px black;
+  box-shadow: 1px 1px 3px black;
+}
+.beer-page__btn:hover {
+  background-color: rgb(31, 97, 138);
+}
+
+.prompt {
+  visibility: hidden;
+  position: absolute;
+  color: white;
+  background-color: gray;
+  font-weight: 500;
+  width: 200px;
+}
+
+.property__info--abv:hover > .prompt--abv {
+  visibility: visible;
+}
+.property__info--ibu:hover > .prompt--ibu {
+  visibility: visible;
+}
+.property__info--ebc:hover > .prompt--ebc {
+  visibility: visible;
+}
+.beer-title__key-words {
+  color: gray;
+}
+.beer-page__description {
+  margin-top: 10px;
+  font-weight: 400;
+  padding-right: 50px;
+}
+.beer-page__info {
+  display: flex;
+  flex-direction: row;
+  min-width: 970px;
+  margin-top: 20px;
+  justify-content: space-between;
+  margin-right: auto;
+}
+.table {
+  border: 2px solid lightgray;
+  border-collapse: collapse;
+  min-width: 400px;
+  height: 150px;
+  margin-top: 10px;
+}
+.property__name {
+  width: 70px;
+  text-align: center;
+}
+.property__info {
+  width: 30px;
+  text-align: center;
+}
+.property__value {
+  text-align: right;
+  padding-right: 40px;
+}
+.property__value span {
+  background-color: gray;
+  color: white;
+  font-weight: 600;
+  padding: 5px 15px;
+  border-radius: 50%;
+}
+.table__row {
+  border: 2px solid lightgray;
+}
+.block {
+  list-style: none;
+  margin-top: 10px;
+}
+.block__elem {
+  border-collapse: collapse;
+  border: 2px solid lightgray;
+  height: 26px;
+  padding: 10px;
+}
+.brewing {
+  margin-top: 20px;
+}
+.brewing__info {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.ingredients__list {
+  margin-top: 10px;
+  list-style: none;
+  max-width: 400px;
+  margin-bottom: 10px;
+}
+.list__elem {
+  border: 2px solid lightgray;
+  padding-left: 20px;
+  padding-bottom: 5px;
+}
+.elem__title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.process-info {
+  display: flex;
+  justify-content: space-between;
+  max-width: 975px;
+}
+.method__list {
+  margin-top: 10px;
+  list-style: none;
+  min-width: 400px;
+}

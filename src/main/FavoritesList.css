@@ -1,0 +1,34 @@
+.favorites__container {
+  display: flex;
+  flex-direction: column;
+}
+.favorites__card {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+  height: 300px;
+  text-align: left;
+  box-shadow: 1px 2px 3px gray;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.card__img {
+  width: 200px;
+  height: 300px;
+  margin-right: 20px;
+}
+.favorites__title {
+  text-align: center;
+}
+.card__info {
+  color: black;
+  width: 650px;
+  padding-right: 20px;
+}
+.card__favorite-description {
+  text-align: justify;
+}
+.card__favorite-flavour {
+  color: gray;
+}
