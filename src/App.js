@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
 import "./App.css";
 import Header from "./header/Header";
 import Catalog from "./main/Catalog";
@@ -18,9 +23,10 @@ function App() {
             <Route path="/favorites">
               <FavoritesList />
             </Route>
-            <Route exact path={`/:beerId`}>
+            <Route exact path={"/beer/:beerId"}>
               <AboutBeerPage />
             </Route>
+            <Redirect from="/" to="/catalog" />
           </Switch>
         </main>
       </div>

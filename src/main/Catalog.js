@@ -41,7 +41,7 @@ function Catalog(props) {
         dataLength={beerList.length}
         next={() => setTimeout(() => onSetLoadResult(), 2000)}
         hasMore={beerAmount >= 72 ? false : true}
-        loader={<h4>Loading...</h4>}
+        loader={<h4>That's all</h4>}
         endMessage={<p>That's all</p>}
         className="catalog-page__catalog catalog"
       >

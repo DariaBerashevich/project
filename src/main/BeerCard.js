@@ -13,7 +13,7 @@ function BeerCard(props) {
         <h2 className="card__beer-name">{name}</h2>
         <h4 className="card__beer-description">{tagline}</h4>
         <div className="card__buttons">
-          <NavLink className="button" to={`/${id}`}>
+          <NavLink className="button" to={`/beer/${id}`}>
             Open
           </NavLink>
           <button
@@ -22,7 +22,7 @@ function BeerCard(props) {
               isFav ? onDeleteFavorite(id) : onSetFavorite(beer);
             }}
           >
-            {isFav ? "Delete" : "Add to favorites"}
+            {isFav ? "Remove favorite" : "Favorite"}
           </button>
         </div>
       </div>

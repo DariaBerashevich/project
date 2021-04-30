@@ -34,10 +34,7 @@ function SearchForm(props) {
               setInputText(e.target.value);
             }}
           />
-
-          <button type="submit" className="form__submit-btn">
-            &#128269;
-          </button>
+          <button type="submit" className="form__submit-btn"></button>
         </div>
         <div className={`form__filter filter ${showFilters ? "show" : "hide"}`}>
           <label className="filter__item filter__item-alcohol">
